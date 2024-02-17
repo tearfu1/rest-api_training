@@ -61,9 +61,9 @@ func init() {
 	}
 
 	allFile, err := os.OpenFile("logs/all.log", os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0644)
-	//if err != nil {
-	//	panic(err)
-	//}
+	if err != nil {
+		panic(err)
+	}
 	l.SetOutput(io.Discard)
 
 	l.AddHook(&writerHook{
