@@ -43,7 +43,7 @@ func (l *Logger) GetLoggerWithField(k string, v interface{}) Logger {
 	return Logger{l.WithField(k, v)}
 }
 
-func Init() {
+func init() {
 	l := logrus.New()
 	l.SetReportCaller(true)
 	l.Formatter = &logrus.TextFormatter{
@@ -61,9 +61,9 @@ func Init() {
 	}
 
 	allFile, err := os.OpenFile("logs/all.log", os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0644)
-	if err != nil {
-		panic(err)
-	}
+	//if err != nil {
+	//	panic(err)
+	//}
 	l.SetOutput(io.Discard)
 
 	l.AddHook(&writerHook{
@@ -72,4 +72,6 @@ func Init() {
 	})
 
 	l.SetLevel(logrus.TraceLevel)
+
+	e = logrus.NewEntry(l)
 }
