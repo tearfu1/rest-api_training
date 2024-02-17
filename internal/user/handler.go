@@ -1,10 +1,10 @@
 package user
 
 import (
-	"converter/internal/handlers"
-	"converter/pkg/logging"
 	"github.com/julienschmidt/httprouter"
 	"net/http"
+	"rest-api_train/internal/handlers"
+	"rest-api_train/pkg/logging"
 )
 
 const (
@@ -13,10 +13,10 @@ const (
 )
 
 type handler struct {
-	logger logging.Logger
+	logger *logging.Logger
 }
 
-func NewHandler(logger logging.Logger) handlers.Handler {
+func NewHandler(logger *logging.Logger) handlers.Handler {
 	return &handler{
 		logger: logger,
 	}
