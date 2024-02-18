@@ -1,0 +1,8 @@
+---
+
+services:
+  mongodb:
+    image: mongo
+    hostname: localhost
+    ports:
+      - 27017:27017
